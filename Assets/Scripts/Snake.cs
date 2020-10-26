@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-
     [SerializeField]
     GameObject snakeCellPrefab;
     [SerializeField]
@@ -14,22 +14,30 @@ public class Snake : MonoBehaviour
     int snakeLength;
     [SerializeField]
     float snakeMoveSpeed;
-
+    int horizontalDir;
+    int verticalDir;
     List<GameObject> snakeCellContainer;
     List<Vector3> snakeCellPostions;
 
     Vector3 snakeMoveVelocity;
+    WaitForSeconds waitForHalfSecond = new WaitForSeconds(0.5f);
 
     // Start is called before the first frame update
     void Awake()
     {
+        horizontalDir = 1;
+        verticalDir = 0;
         snakeCellContainer = new List<GameObject>();
         snakeCellPostions = new List<Vector3>();
         snakeLength = 5;
         LoadSnakeCellPositions();
         SpawnSnake();
     }
-    
+    private void Start()
+    {
+        MoveSnake();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,7 +46,7 @@ public class Snake : MonoBehaviour
 
     void FixedUpdate()
     {
-        MoveSnakeHead();
+        
     }
 
     void LoadSnakeCellPositions()
@@ -46,7 +54,7 @@ public class Snake : MonoBehaviour
         for(int i = 0;i<snakeLength;i++)
         {
             snakeCellPostions.Add(initialPos);
-            initialPos -=  Vector3.right* distanceBetweenCells;
+            initialPos -= Vector3.right* distanceBetweenCells;
         } 
     }
     
@@ -54,7 +62,7 @@ public class Snake : MonoBehaviour
     {
         for(int i=0;i< snakeLength;i++)
         {
-            snakeCellContainer.Add(Instantiate(snakeCellPrefab, this.gameObject.transform));
+            snakeCellContainer.Add(Instantiate(snakeCellPrefab, gameObject.transform));
             snakeCellContainer[i].transform.localPosition = snakeCellPostions[i];
             if(i == 0)
             {
@@ -62,15 +70,42 @@ public class Snake : MonoBehaviour
             }
         }
     }
+
     void GetInput()
     {
-        snakeMoveVelocity.x = Input.GetAxis("Horizontal");
-        snakeMoveVelocity.y = Input.GetAxis("Vertical");
+        if(Input.GetKeyDown(KeyCode.W) && verticalDir == 0)
+        {
+            verticalDir = 1;
+            horizontalDir = 0;
+        }        
+        if(Input.GetKeyDown(KeyCode.S) && verticalDir == 0)
+        {
+            verticalDir = -1;
+            horizontalDir = 0;
+        }        
+        if(Input.GetKeyDown(KeyCode.A) && horizontalDir == 0)
+        {
+            verticalDir = 0;
+            horizontalDir = -1;
+        }       
+        if(Input.GetKeyDown(KeyCode.D) && horizontalDir == 0)
+        {
+            verticalDir = 0;
+            horizontalDir = 1;
+        }
+        snakeMoveVelocity.y = verticalDir;
+        snakeMoveVelocity.x = horizontalDir;
+    }
+    
+    void MoveSnake()
+    {
+        StartCoroutine(MoveSnakeCoroutine());        
     }
 
-    void MoveSnakeHead()
+    private IEnumerator MoveSnakeCoroutine()
     {
-        snakeCellPostions[0] = snakeCellContainer[0].transform.position;
-        snakeCellContainer[0].transform.Translate(snakeMoveVelocity * snakeMoveSpeed * Time.deltaTime);
+        yield return waitForHalfSecond;
+        snakeCellContainer[0].transform.localPosition += snakeMoveVelocity * snakeMoveSpeed;
+        StartCoroutine(MoveSnakeCoroutine());
     }
 }
