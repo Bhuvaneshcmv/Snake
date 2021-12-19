@@ -44,11 +44,6 @@ public class Snake : MonoBehaviour
         GetInput();
     }
 
-    void FixedUpdate()
-    {
-        
-    }
-
     void LoadSnakeCellPositions()
     {
         for(int i = 0;i<snakeLength;i++)
