@@ -12,4 +12,11 @@ public class LevelData : ScriptableObject
     public Vector3Int boundaryTop;
     
     public Vector3Int boundaryBottom;
+
+    public GameObject cellPrefab;
+
+    public List<int> backgroundTypeArray;
+    public Dictionary<int, GameObject> backgroundTypeMap;
+
+
 }

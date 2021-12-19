@@ -5,7 +5,9 @@ using UnityEngine;
 public class Snake : MonoBehaviour
 {
     [SerializeField]
-    GameObject snakeCellPrefab;
+    SnakeCell snakeTailPrefab;
+    [SerializeField]
+    SnakeCell snakeHeadPrefab;
     [SerializeField]
     Vector3 initialPos = Vector3.zero;
     [SerializeField]
@@ -16,18 +18,18 @@ public class Snake : MonoBehaviour
     float snakeMoveSpeed;
     int horizontalDir;
     int verticalDir;
-    List<GameObject> snakeCellContainer;
+    List<SnakeCell> snakeCellContainer;
     List<Vector3> snakeCellPostions;
 
     Vector3 snakeMoveVelocity;
     WaitForSeconds waitForHalfSecond = new WaitForSeconds(0.5f);
+    Vector3 tempSnakeHeadPos;
 
-    // Start is called before the first frame update
     void Awake()
     {
         horizontalDir = 1;
         verticalDir = 0;
-        snakeCellContainer = new List<GameObject>();
+        snakeCellContainer = new List<SnakeCell>();
         snakeCellPostions = new List<Vector3>();
         snakeLength = 5;
         LoadSnakeCellPositions();
@@ -38,7 +40,6 @@ public class Snake : MonoBehaviour
         MoveSnake();
     }
 
-    // Update is called once per frame
     void Update()
     {
         GetInput();
@@ -57,12 +58,15 @@ public class Snake : MonoBehaviour
     {
         for(int i=0;i< snakeLength;i++)
         {
-            snakeCellContainer.Add(Instantiate(snakeCellPrefab, gameObject.transform));
-            snakeCellContainer[i].transform.localPosition = snakeCellPostions[i];
-            if(i == 0)
+            if (i == 0)
             {
-                snakeCellContainer[i].GetComponent<SpriteRenderer>().color = Color.blue;
+                snakeCellContainer.Add(Instantiate(snakeHeadPrefab, gameObject.transform));
+                snakeCellContainer[i].transform.localPosition = snakeCellPostions[i];
+                continue;
             }
+            snakeCellContainer.Add(Instantiate(snakeTailPrefab, gameObject.transform));
+            snakeCellContainer[i].transform.localPosition = snakeCellPostions[i];
+
         }
     }
 
@@ -97,10 +101,29 @@ public class Snake : MonoBehaviour
         StartCoroutine(MoveSnakeCoroutine());        
     }
 
-    private IEnumerator MoveSnakeCoroutine()
+    IEnumerator MoveSnakeCoroutine()
     {
         yield return waitForHalfSecond;
-        snakeCellContainer[0].transform.localPosition += snakeMoveVelocity * snakeMoveSpeed;
+        tempSnakeHeadPos = snakeCellContainer[0].transform.position;
+        tempSnakeHeadPos += snakeMoveVelocity * snakeMoveSpeed;
+        CalculateCellPositions();
         StartCoroutine(MoveSnakeCoroutine());
     }
+
+    void CalculateCellPositions()
+    {
+        //snakeCellPostions[0] = tempSnakeHeadPos;
+        
+        for(int i = 0; i < snakeCellContainer.Count; i++)
+        {
+            snakeCellPostions[i] = snakeCellContainer[i].transform.position;
+        }
+
+        snakeCellContainer[0].transform.position = tempSnakeHeadPos;
+        for(int i = 0;i < snakeCellContainer.Count-1; i++)
+        {
+            snakeCellContainer[i+1].transform.position = snakeCellPostions[i];
+        }
+    }
+
 }

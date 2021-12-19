@@ -249,7 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 2458096757581300594, guid: 226d42b5664a6c14295d5f13d8579a56,
     type: 3}
-  tilemap: {fileID: 0}
   levelData: {fileID: 11400000, guid: 566a97e50ce45b74daa65f5431a9ee1e, type: 2}
 --- !u!1 &1742269789
 GameObject:
@@ -294,7 +293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755cbbf777269194dbb5969aecfc4e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snakeCellPrefab: {fileID: 4268278564425372484, guid: ce08accfc8abb1440a9ea06f48efe307,
+  snakeTailPrefab: {fileID: 5066542167851186671, guid: d825ff40b5353f14184a70c5ed3d0d64,
+    type: 3}
+  snakeHeadPrefab: {fileID: 6769449650951934561, guid: c19b50786325ca546ae400e555b254ca,
     type: 3}
   initialPos: {x: 0, y: 0, z: 0}
   distanceBetweenCells: 0.25
