@@ -10,6 +10,7 @@ public class Snake : MonoBehaviour
     SnakeCell snakeHeadPrefab;
     [SerializeField]
     Vector3 initialPos = Vector3.zero;
+    
     [SerializeField]
     float distanceBetweenCells;
     [SerializeField]
@@ -18,6 +19,7 @@ public class Snake : MonoBehaviour
     float snakeMoveSpeed;
     int horizontalDir;
     int verticalDir;
+
     List<SnakeCell> snakeCellContainer;
     List<Vector3> snakeCellPostions;
 
@@ -104,17 +106,17 @@ public class Snake : MonoBehaviour
     IEnumerator MoveSnakeCoroutine()
     {
         yield return waitForHalfSecond;
-        tempSnakeHeadPos = snakeCellContainer[0].transform.position;
-        tempSnakeHeadPos += snakeMoveVelocity * snakeMoveSpeed;
+        
         CalculateCellPositions();
         StartCoroutine(MoveSnakeCoroutine());
     }
 
     void CalculateCellPositions()
     {
-        //snakeCellPostions[0] = tempSnakeHeadPos;
-        
-        for(int i = 0; i < snakeCellContainer.Count; i++)
+        tempSnakeHeadPos = snakeCellContainer[0].transform.position;
+        tempSnakeHeadPos += snakeMoveVelocity * snakeMoveSpeed;
+
+        for (int i = 0; i < snakeCellContainer.Count; i++)
         {
             snakeCellPostions[i] = snakeCellContainer[i].transform.position;
         }
