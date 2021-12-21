@@ -5,13 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/LevelData",fileName ="LevelData")]
 public class LevelData : ScriptableObject
 {
-    public Vector3 boundaryLeft;
+    public Vector3 boundaryTopLeft;
     
-    public Vector3 boundaryRight;
+    public Vector3 boundaryTopRight;
     
-    public Vector3 boundaryTop;
+    public Vector3 boundaryBottomLeft;
     
-    public Vector3 boundaryBottom;
+    public Vector3 boundaryBottomRight;
 
     public GameObject bgTilePrefab;
 

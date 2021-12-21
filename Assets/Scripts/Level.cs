@@ -6,10 +6,4 @@ public class Level : MonoBehaviour
 {
     [SerializeField]
     LevelData levelData;
-
-    
-    void CreateLevel()
-    {
-
-    }
 }

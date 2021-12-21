@@ -5,10 +5,5 @@ using UnityEngine;
 public abstract class BgTile : MonoBehaviour
 {
     public Vector3 position;
-
-    public void SpawnTile()
-    {
-
-    }
-
+    public int index;
 }

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e38c115bdff38b4ba593c6f8216f8c9, type: 3}
   m_Name: LevelData
   m_EditorClassIdentifier: 
-  boundaryLeft: {x: -14, y: 0, z: 0}
-  boundaryRight: {x: 15, y: 0, z: 0}
-  boundaryTop: {x: 0, y: -8, z: 0}
-  boundaryBottom: {x: 0, y: 9, z: 0}
+  boundaryTopLeft: {x: -7.75, y: 4.75, z: 0}
+  boundaryTopRight: {x: -7.75, y: 4.75, z: 0}
+  boundaryBottomLeft: {x: 7.75, y: -4.75, z: 0}
+  boundaryBottomRight: {x: 7.75, y: -4.75, z: 0}
+  bgTilePrefab: {fileID: 0}
+  backgroundTypeArray: 

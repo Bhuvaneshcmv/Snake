@@ -258,6 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1555921003}
   - component: {fileID: 1555921004}
+  - component: {fileID: 1555921005}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -293,6 +294,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 2458096757581300594, guid: 226d42b5664a6c14295d5f13d8579a56,
     type: 3}
+  levelData: {fileID: 11400000, guid: 566a97e50ce45b74daa65f5431a9ee1e, type: 2}
+--- !u!114 &1555921005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555921002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9187b0c2a7d50c94cb551856729d47f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgTileBorder: {fileID: -5449170123502876490, guid: 71ff7e0666f4f1c4d8dff3d57acb3716,
+    type: 3}
+  bgTileNormal: {fileID: 4513265017668365403, guid: bde55ee65a84350408359ee50223b04f,
+    type: 3}
+  levelParent: {fileID: 23533567}
   levelData: {fileID: 11400000, guid: 566a97e50ce45b74daa65f5431a9ee1e, type: 2}
 --- !u!1 &1742269789
 GameObject:
