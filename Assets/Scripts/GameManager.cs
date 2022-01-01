@@ -12,14 +12,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] LevelData levelData;
     [SerializeField] Vector3 deltaTilePos;
 
+    [SerializeField] List<GameObject>gameplayElements;
+    [SerializeField] List<GameObject>gameOverElements;
+
+
+    public void OnEnable()
+    {
+        SnakeHead.GameOver += GameOver;
+    }
+    public void OnDisable()
+    {
+        SnakeHead.GameOver -= GameOver;
+    }
     private void Awake()
     {
-        bgTiles = new List<BgTile>();  
-        CreateLevel();
+        bgTiles = new List<BgTile>();
+        GameInit();
+        
     }
 
     void CreateLevel()
     {
+        
         Vector3 tilePos = levelData.boundaryTopLeft;
         BgTile tempTile;
 
@@ -49,6 +63,30 @@ public class GameManager : MonoBehaviour
                 if (tilePos.y < levelData.boundaryBottomLeft.y)
                     return;
             }
+        }
+    }
+
+    void GameInit()
+    {
+        for (int i = 0; i < gameplayElements.Count; i++)
+        {
+            gameplayElements[i].gameObject.SetActive(true);
+        }
+        for (int i = 0; i < gameOverElements.Count; i++)
+        {
+            gameOverElements[i].gameObject.SetActive(false);
+        }
+        CreateLevel();
+    }
+    void GameOver()
+    {
+        for (int i = 0; i < gameplayElements.Count; i++)
+        { 
+            gameplayElements[i].gameObject.SetActive(false);
+        }
+        for(int i = 0;i< gameOverElements.Count;i++)
+        {
+            gameOverElements[i].gameObject.SetActive(true); 
         }
     }
 }
