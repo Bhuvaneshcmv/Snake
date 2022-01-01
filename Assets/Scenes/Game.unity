@@ -246,7 +246,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1555921002
 GameObject:
@@ -278,7 +278,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1555921004
 MonoBehaviour:
@@ -313,6 +313,7 @@ MonoBehaviour:
     type: 3}
   levelParent: {fileID: 23533567}
   levelData: {fileID: 11400000, guid: 566a97e50ce45b74daa65f5431a9ee1e, type: 2}
+  deltaTilePos: {x: 0.5, y: 0.5, z: 0}
 --- !u!1 &1742269789
 GameObject:
   m_ObjectHideFlags: 0
