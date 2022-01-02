@@ -9,7 +9,7 @@ public class Snake : MonoBehaviour
     [SerializeField]
     SnakeCell snakeHeadPrefab;
     [SerializeField]
-    Vector3 initialPos = Vector3.zero;
+    Vector3 initialPos;
     
     [SerializeField]
     float distanceBetweenCells;
