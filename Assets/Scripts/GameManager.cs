@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject>gameplayElements;
     [SerializeField] List<GameObject>gameOverElements;
 
+    [SerializeField] List<Snake> snakes;
+
 
     public void OnEnable()
     {
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void GameInit()
+    public void GameInit()
     {
         for (int i = 0; i < gameplayElements.Count; i++)
         {
@@ -76,9 +78,13 @@ public class GameManager : MonoBehaviour
         {
             gameOverElements[i].gameObject.SetActive(false);
         }
+        foreach(Snake snake in snakes)
+        {
+            snake.SnakeInit();
+        }
         CreateLevel();
     }
-    void GameOver()
+    public void GameOver()
     {
         for (int i = 0; i < gameplayElements.Count; i++)
         { 
@@ -87,6 +93,10 @@ public class GameManager : MonoBehaviour
         for(int i = 0;i< gameOverElements.Count;i++)
         {
             gameOverElements[i].gameObject.SetActive(true); 
+        }
+        foreach (Snake snake in snakes)
+        {
+            snake.DestroySnake();
         }
     }
 }

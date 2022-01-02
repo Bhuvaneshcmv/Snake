@@ -20,28 +20,33 @@ public class Snake : MonoBehaviour
     int horizontalDir;
     int verticalDir;
 
-    List<SnakeCell> snakeCellContainer;
-    List<Vector3> snakeCellPostions;
+    List<SnakeCell> snakeCellContainer = new List<SnakeCell>();
+    List<Vector3> snakeCellPostions = new List<Vector3>();
 
     Vector3 snakeMoveVelocity;
     WaitForSeconds waitForHalfSecond = new WaitForSeconds(0.5f);
     Vector3 tempSnakeHeadPos;
 
-    void Awake()
+    public void SnakeInit()
     {
         horizontalDir = 1;
         verticalDir = 0;
-        snakeCellContainer = new List<SnakeCell>();
-        snakeCellPostions = new List<Vector3>();
         snakeLength = 5;
         LoadSnakeCellPositions();
         SpawnSnake();
-    }
-    private void Start()
-    {
         MoveSnake();
     }
 
+    public void DestroySnake()
+    {
+        foreach(var snakeCell in snakeCellContainer)
+        {
+            Destroy(snakeCell.gameObject);
+        }
+        snakeCellContainer.Clear();
+        snakeCellPostions.Clear();
+
+    }
     void Update()
     {
         GetInput();
