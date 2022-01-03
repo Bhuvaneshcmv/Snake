@@ -7,6 +7,8 @@ public class FoodManager : MonoBehaviour
     Vector3Int pos;
     [SerializeField]
     LevelData levelData;
+    [SerializeField]
+    Transform foodParent;
 
     bool foodExists;
 
@@ -42,7 +44,7 @@ public class FoodManager : MonoBehaviour
         pos = Vector3Int.zero;
         pos.x = Random.Range((int) levelData.boundaryTopLeft.x, (int) levelData.boundaryTopRight.x);
         pos.y = Random.Range((int) levelData.boundaryTopLeft.y, (int) levelData.boundaryBottomRight.y);
-        Instantiate(foodPrefab, new Vector3( pos.x, pos.y, pos.z), Quaternion.identity);
+        Instantiate(foodPrefab, new Vector3( pos.x, pos.y, pos.z-0.25f), Quaternion.identity, foodParent);
     }
     public void InstantiateFood(FoodType foodType)
     {

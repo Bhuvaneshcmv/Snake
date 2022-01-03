@@ -493,6 +493,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605209359}
   m_CullTransparentMesh: 0
+--- !u!1 &778070585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778070586}
+  m_Layer: 0
+  m_Name: Food Parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &778070586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778070585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2125431650}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &857557104
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +759,7 @@ MonoBehaviour:
   foodPrefab: {fileID: -5657104315668250899, guid: 226d42b5664a6c14295d5f13d8579a56,
     type: 3}
   levelData: {fileID: 11400000, guid: 566a97e50ce45b74daa65f5431a9ee1e, type: 2}
+  foodParent: {fileID: 778070586}
 --- !u!114 &1555921005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,7 +911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742269789}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2125431650}
@@ -1201,6 +1232,7 @@ Transform:
   m_Children:
   - {fileID: 23533567}
   - {fileID: 1742269790}
+  - {fileID: 778070586}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -20,6 +20,7 @@ public class Snake : MonoBehaviour
     int horizontalDir;
     int verticalDir;
 
+
     List<SnakeCell> snakeCellContainer = new List<SnakeCell>();
     List<Vector3> snakeCellPostions = new List<Vector3>();
 
