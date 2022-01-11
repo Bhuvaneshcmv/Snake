@@ -37,7 +37,15 @@ public class Snake : MonoBehaviour
         SpawnSnake();
         MoveSnake();
     }
+    private void OnEnable()
+    {
+        Food.ateFood += AddCell;
+    }
 
+    private void OnDisable()
+    {
+        Food.ateFood -= AddCell;
+    }
     public void DestroySnake()
     {
         foreach(var snakeCell in snakeCellContainer)
@@ -134,4 +142,10 @@ public class Snake : MonoBehaviour
         }
     }
 
+    void AddCell(FoodType foodType)
+    {
+        snakeCellContainer.Add(Instantiate(snakeTailPrefab, gameObject.transform));
+        snakeCellPostions.Add(snakeCellPostions[snakeCellPostions.Count-1] -= Vector3.right * distanceBetweenCells);
+        snakeCellContainer[snakeCellContainer.Count-1].transform.localPosition = snakeCellPostions[snakeCellContainer.Count-1];
+    }
 }
