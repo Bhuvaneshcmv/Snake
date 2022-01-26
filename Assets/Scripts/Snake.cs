@@ -145,7 +145,9 @@ public class Snake : MonoBehaviour
     void AddCell(FoodType foodType)
     {
         snakeCellContainer.Add(Instantiate(snakeTailPrefab, gameObject.transform));
-        snakeCellPostions.Add(snakeCellPostions[snakeCellPostions.Count-1] -= Vector3.right * distanceBetweenCells);
+        
+        snakeCellPostions.Add(snakeCellPostions[snakeCellPostions.Count - 1]);
+
         snakeCellContainer[snakeCellContainer.Count-1].transform.localPosition = snakeCellPostions[snakeCellContainer.Count-1];
     }
 }
